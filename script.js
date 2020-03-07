@@ -1,5 +1,9 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
+function showMenu() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
 
-// prints "hi" in the browser's dev tools console
-console.log("hi");
+function hideMenu() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
