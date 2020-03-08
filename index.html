@@ -12,6 +12,7 @@
     
     <!-- importe les codes javascript utilisés -->
     <script src="/script.js" defer></script>
+    <script src="inscription.js" defer></script>
   </head>  
   <body>
     
@@ -19,6 +20,34 @@
     <div id="pageContent">
         <!-- le bouton qui permet d'afficher le Menu -->
        <button class="openbtn" id="btnOpen" onclick="showMenu()">&#9776; </button>
+      
+      <!-- Modal inscription / connexion -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item" id="menu_connexion">
+                                    <a class="nav-link " href="#">Connexion</a>
+                                </li>
+                                <li class="nav-item " id="menu_inscription">
+                                    <a class="nav-link " href="#">Inscription</a>
+                                </li>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </ul>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="button" class="btn btn-success">Valider</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- Fin Modal inscription / connexion -->
        
     </div>
     
@@ -29,7 +58,7 @@
   <a href="#">Profil</a>
   <a href="#">Rechercher</a>
   <a href="#">Proposer un trajet</a>
-  <a href="#">Inscription</a>
+  <a href="#" id="inscription">Inscription</a>
   <a href="#">Connexion</a>
     </div>
     

@@ -63,3 +63,20 @@
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 }
+
+/* Inscription / connexion */
+#exampleModalCenter .modal-content{
+    box-shadow: 2px 2px 2px #2a3951
+}
+#exampleModalCenter .form-control{
+    border: 1px solid white;
+}
+
+#exampleModalCenter .form-group{
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #66748a;
+    border-radius: 10px;
+}
+
+/* Fin Inscription / connexion */
