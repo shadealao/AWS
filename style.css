@@ -1,14 +1,14 @@
-/* CSS files add styling rules to your content */
+/* Fichier Css */
 
 .sidebar {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+  height: 100%; 
+  width: 0; /* c'est l'attribut qui permet d'afficher ou non le menu (width=0 => menu fermé)*/
+  position: fixed; 
+  z-index: 1; 
   top: 0;
   left: 0;
-  background-color: #66748a; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: #66748a; 
+  overflow-x: hidden; /* pour dire que si le */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
