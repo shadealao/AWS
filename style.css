@@ -1,5 +1,6 @@
 /* Fichier Css */
 
+/* Menu */
 .sidebar {
   height: 100%; 
   width: 0; /* c'est l'attribut qui permet d'afficher ou non le menu (width=0 => menu fermé)*/
@@ -8,25 +9,27 @@
   top: 0;
   left: 0;
   background-color: #66748a; 
-  overflow-x: hidden; /* pour dire que si le */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  overflow-x: hidden; /* pour dire que si le contenu deppase le width il ne l'affiche pas */
+                      /* donc quand le width=0 il va pas afficher le menu */
+  padding-top: 60px; 
+  transition: 0.5s; 
 }
 
-
+/* les elements du menu */
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: white;
   display: block; 
   transition: 0.3s;
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+  color: black;
 }
 
+/* le bouton qui ferme le menu */
 .sidebar .closebtn {
   position: absolute;
   top: 0;
@@ -35,6 +38,7 @@
   margin-left: 50px;
 }
 
+/* le bouton qui ouvre le menu */
 .openbtn {
   font-size: 20px;
   cursor: pointer;
@@ -49,12 +53,12 @@
   background-color: #66748a;
 }
 
-#main {
-  transition: margin-left .5s; /* If you want a transition effect */
+#pageContent {
+  transition: margin-left .5s; 
   padding: 20px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+/* Réduire la taille du menu sur les smartphones */
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
