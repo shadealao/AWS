@@ -8,7 +8,7 @@
   z-index: 1; 
   top: 0;
   left: 0;
-  background-color: #66748a; 
+  background-color: #0082ae; 
   overflow-x: hidden; /* pour dire que si le contenu deppase le width il ne l'affiche pas */
                       /* donc quand le width=0 il va pas afficher le menu */
   padding-top: 60px; 
@@ -42,7 +42,7 @@
 .openbtn {
   font-size: 20px;
   cursor: pointer;
-  background-color: white;
+  background-color: #bedff1;
   color: black;
   padding: 10px 15px;
   border: none;
@@ -56,6 +56,9 @@
 #pageContent {
   transition: margin-left .5s; 
   padding: 20px;
+  background-color: #bedff1;
+  height:100vh;
+  
 }
 
 /* Réduire la taille du menu sur les smartphones */
