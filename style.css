@@ -86,3 +86,87 @@
 }
 
 /* Fin Inscription / connexion */
+
+
+
+/* debut Profile */
+
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  background-color: white;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+
+.menu {
+  position: relative;
+  background-color: #99ffcc;
+  width: 20%;
+  height: 700px;
+  float: left;
+  display: block;
+  text-align: center;
+  margin-top: 0px;
+  margin-right: 10px;
+  margin-left: 0%;
+  transition-duration: 0.2s;
+}
+
+image {
+  border: 15px solid white;
+  padding-left: 30px;
+  border-radius: 5px;
+  
+  margin-left: 21%;
+}
+header {
+  background-color: #b3ff66;
+  text-align: right;
+  margin: 0px 0px 3px 0px;
+  padding: 0.5px 0.5px 0.5px 0.5px;
+}
+.user-list {
+  
+  background-color: #c2c2a3;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px;
+  padding-left: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-left: 21%;
+  font-style: italic;
+}
+
+ul.user-list {
+  position: relative;
+  line-height: 1.9;
+}
+
+.btn_ {
+  width: 19.6%;
+  font-size: 20px;
+  padding: 5px 5px 5px 5px;
+  text-align: left;
+  font-weight: bold;
+  display: block;
+  border: 2px solid white;
+}
+
+.menu {
+  position: relative;
+  line-height: 1.9;
+  text-align: left;
+  font-weight: bold;
+  padding: 0px 1px 1px 1px;
+}
+
+
+/* fin profile */ 

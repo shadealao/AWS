@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Le header -->
+  </head>  
+  <body>
+    <header>
+      <div class="login">
+        <ul>
+          <il><a href="acceuil.html"> se deconnecter |</a></il> 
+          <il><a href="contact_page.html">Contact</a></il>
+          
+        </ul>
+      </div>
+      <bouton class="btn_" id="btn_id" onclick="asideswipe()">
+       Menu
+      </bouton>
+    </header>
+    
+    <!--debut menu -->
+
+    <div class="menu" id="menu_id">
+      
+      <script>
+        function asideswipe()   {
+        var div = document.getElementById('menu_id'),
+        display = getComputedStyle(div, null).display;
+         
+        if(display == 'block')  {
+            document.getElementById('menu_id').style.display = 'none';
+        }else   {
+            document.getElementById('menu_id').style.display = 'block';
+        }
+    } 
+      </script>
+      
+      <ul> <!-- utilisations des btn dans le menu -->
+        <il>Acceuil<br></il>
+        <il>Presentation<br></il>
+        <il>Profile<br></il>
+        <il>Mes Trajets<br></il>
+      </ul>
+      
+    </div>
+    
+    <!-- fin menu -->
+    
+    <!-- le profile de l'utilisateur -->
+    
+    <div class = "user">
+      <image class="profile" src="https://cdn.glitch.com/734b476b-433c-4496-a73d-51bbcc6d7b3a%2FWebp.net-resizeimage.jpg?v=1583852356296" alt="photo de profile "></image>
+    <h3>
+      NOM Prénom
+    </h3>
+      
+      <ul class="user-list">
+        <il> Tel: <br></il>
+        <il> Email: <br></il>
+        <il> Université: <br> </il>
+        <il> Identifiant étudiant: <br></il>
+        <il> Adresse: <br></il>
+        <il> Description: </il>
+      </ul>
+    </div>
+   
+    
+    
+    
+  </body>
+</html>
