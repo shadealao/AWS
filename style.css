@@ -121,6 +121,8 @@ h1 {
  .img-container {
         text-align: center;
         display: block;
+        width:70%;
+        height:200;
       }
 
 image {
