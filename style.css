@@ -118,6 +118,10 @@ h1 {
   margin-left: 0%;
   transition-duration: 0.2s;
 }
+ .img-container {
+        text-align: center;
+        display: block;
+      }
 
 image {
   border: 15px solid white;
