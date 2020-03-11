@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/script.js" defer></script>
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
@@ -12,50 +13,32 @@
     <!-- Le header -->
   </head>  
   <body>
-    <header>
-      <div class="login">
-        <ul>
-          <il><a href="acceuil.html"> se deconnecter |</a></il> 
-          <il><a href="contact_page.html">Contact</a></il>
-          
-        </ul>
-      </div>
-      <bouton class="btn_" id="btn_id" onclick="asideswipe()">
-       Menu
-      </bouton>
-    </header>
+    
     
     <!--debut menu -->
 
-    <div class="menu" id="menu_id">
-      
-      <script>
-        function asideswipe()   {
-        var div = document.getElementById('menu_id'),
-        display = getComputedStyle(div, null).display;
-         
-        if(display == 'block')  {
-            document.getElementById('menu_id').style.display = 'none';
-        }else   {
-            document.getElementById('menu_id').style.display = 'block';
-        }
-    } 
-      </script>
-      
-      <ul> <!-- utilisations des btn dans le menu -->
-        <il>Acceuil<br></il>
-        <il>Presentation<br></il>
-        <il>Profile<br></il>
-        <il>Mes Trajets<br></il>
-      </ul>
-      
+    <!-- c'est la balise qui contient le menu -->
+    <!-- on doit l'avoir dans toutes les pages du site -->
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="hideMenu()"
+        >&times;</a
+      >
+      <a href="profile.html">Profil</a>
+      <a href="#">Rechercher</a>
+      <a href="Presentation.html">Proposer un trajet</a>
+      <a href="#" id="inscription">Inscription</a>
+      <a href="#">Connexion</a>
     </div>
     
     <!-- fin menu -->
     
-    <!-- le profile de l'utilisateur -->
+    <div id="pageContent">
+      
     
-    <div class = "user">
+    <!-- le profile de l'utilisateur -->
+     <!-- le bouton qui permet d'afficher le Menu -->
+      <button class="openbtn" id="btnOpen" onclick="showMenu()">&#9776;</button>
+    
       <image class="profile" src="https://cdn.glitch.com/734b476b-433c-4496-a73d-51bbcc6d7b3a%2FWebp.net-resizeimage.jpg?v=1583852356296" alt="photo de profile "></image>
     <h3>
       NOM Prénom
@@ -69,7 +52,8 @@
         <il> Adresse: <br></il>
         <il> Description: </il>
       </ul>
-    </div>
+    
+      </div>
    
     
     
