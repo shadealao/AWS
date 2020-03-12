@@ -1,0 +1,46 @@
+
+.recherche-title{
+    font-size: 50px; 
+    padding-bottom: 100px;
+    padding-top: 70px; 
+}
+span.trajet-circle{
+    height: 15px;
+    width: 15px;
+    vertical-align: top;
+    margin: 0 auto;
+    border: solid black 2px;
+    border-radius: 50%;
+    display: inline-block;
+}
+div.vertical-line{
+    margin-left: 17%;
+    border-left: 5px solid black; 
+}
+
+.trajet-vertical-separator{
+    height: 50px;
+}
+
+#img-profile{
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -30px;
+    margin-left: -30px; /* Half the height */
+}
+#rating-text{
+    font-size: 1.8em;
+    position: absolute;
+    margin-left: 15px;
+}
+#trajet-name{
+    font-size: 1.3em;
+}
+.trajet-place{
+    font-size: 1.2em;
+
+}

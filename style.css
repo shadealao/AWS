@@ -11,11 +11,18 @@
   background-color: #0082ae; 
   overflow-x: hidden; /* pour dire que si le contenu deppase le width il ne l'affiche pas */
                       /* donc quand le width=0 il va pas afficher le menu */
-  padding-top: 60px; 
+  padding-top: 0px; 
   transition: 0.5s; 
 }
 
 /* les elements du menu */
+.sidebar div {
+    padding: 0px;
+}
+.sidebar #login {
+    padding-top: 8px;
+    
+}
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -42,7 +49,8 @@
 .openbtn {
   font-size: 20px;
   cursor: pointer;
-  background-color: #bedff1;
+  background-color: white;
+  /*background-color: #bedff1;*/
   color: black;
   padding: 10px 15px;
   border: none;
@@ -56,7 +64,8 @@
 #pageContent {
   transition: margin-left .5s; 
   padding: 20px;
-  background-color: #bedff1;
+ /* background-color: #bedff1;*/
+  background-color: white;
   height:100vh;
   
 }
@@ -85,11 +94,16 @@
     border-radius: 10px;
 }
 
+
+.modal-content{
+    height: 400px;
+    
+}
 /* Fin Inscription / connexion */
 
 
 
-/* debut Profile */
+/* debut Profil */
 
 /* CSS files add styling rules to your content */
 
