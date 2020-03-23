@@ -1,4 +1,9 @@
-
+$(".menu_connexion").click(function(){
+    $("#Modalconnexion").modal("show");
+});
+$(".menu_inscription").click(function(){
+    $("#Modalinscription").modal("show");
+});
 /*Champs concernant le passage de connexion à inscription*/
 $("#Modalconnexion #menu_inscription a").click(function() {
     $("#Modalconnexion").modal("hide");
