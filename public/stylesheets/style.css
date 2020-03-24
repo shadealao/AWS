@@ -331,3 +331,32 @@ body {
 }
 
 /* fin profil */
+
+
+
+
+
+
+
+/* Messagerie */
+
+#messagerie textarea {
+   resize : none ;
+}
+
+
+#messagerie #messages .id_moi, #messagerie #messages .id_julia{
+ /* max-width: 50px;*/
+}
+#messagerie #messages {
+  list-style:none;
+  height: 400px;
+  overflow: auto;
+  font-size: 25px;
+}
+#messagerie #messages .id_moi{
+/*  background-color: orange;*/
+}
+
+
+/* fin Messagerie */

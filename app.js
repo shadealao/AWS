@@ -15,10 +15,20 @@ var proposerRouter = require('./routes/proposer');
 var messagerieRouter = require('./routes/messagerie');
 
 var app = express();
+//msgerie
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
 var cons = require('consolidate');
+
+//msg
+app.use(function(req, res, next){
+  res.io = io;
+  next();
+});
+
 
 // view engine setup
 app.engine('html', cons.swig)
@@ -59,42 +69,9 @@ app.use(function(err, req, res, next) {
 
 
 
-//messagerie
-/*let io = require('socket.io');
-let lastMessage = new Array();
-io.on('connection', function(client){
-
-client.emit('last message', lastMessage);
-
-
-client.on('new message', function(data){
-    // Vérification du pseudonyme
-    if(!data.username || typeof data.username == undefined || data.username.length > 25){
-        client.emit('error message', "Le pseudonyme rentré n'est pas valide !");
-        return;
-    }
-
-    // Vérification du message
-    if(!data.message || typeof data.message == undefined || data.message.length > 255){
-        client.emit('error message', "Le message rentré n'est pas valide !");
-        return;
-    }
-    lastMessage.push(data.username + ' : ' + data.message);
-    for(var i = lastMessage.length-1; i--;){
-        if(i == 4){
-            lastMessage.shift();
-        }
-    }
-    io.emit('new message', data);
-});
-
-client.on('disconnect', function(){
-    delete client;
-});
-
-});
-*/
 
 
 
-module.exports = app;
+
+module.exports = {app: app, server: server};
+//module.exports = app;
