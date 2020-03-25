@@ -9,6 +9,7 @@
             <h1 class="col-sm-12 col-md-12 text-center titre_page">Messagerie</h1>
             <div class="col-md-12">
                 <div class="row">
+                    <!--  Liste des conversations  -->
                     <div class="col-4">
                         <div class="list-group" id="list-tab" role="tablist" style="height: 500px; background-color: white">
                             <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Julia</a>
@@ -17,32 +18,38 @@
                             <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Salim</a>
                         </div>
                     </div>
+                    <!-- FIN Liste des conversations  -->
+
+                    <!--  Colonne de droite  -->
                     <div class="col-8">
                         <div class="tab-content" id="nav-tabContent">
+                            <!--  Détail conseration  -->
                             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                                 <ul id="messages" >
-                                    <li class="id_moi  d-flex justify-content-end"><p class=" badge badge-info">moi : Bonjour</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light">Julia : Salut! Tu vas bien ?</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">moi : ça va merci et toi ?</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light">Julia : Oui! Alors quoi de neuf</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">moi : Ah! En ce moment tout est vieux, le travail la famille etc. :)</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">moi : Et toi ?</p></li>
+                                    <li class="id_moi  d-flex justify-content-end"><p class=" badge badge-info">Bonjour</p></li>
+                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Salut! Tu vas bien ?</p></li>
+                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> ça va merci et toi ?</p></li>
+                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Oui! Alors quoi de neuf</p></li>
+                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Ah! En ce moment tout est vieux, le travail la famille etc. :)</p></li>
+                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Et toi ?</p></li>
 
-                                    <li class="id_moi  d-flex justify-content-end"><p class=" badge badge-info">moi : Bonjour</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light">Julia : Salut! Tu vas bien ?</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">moi : ça va merci et toi ?</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light">Julia : Oui! Alors quoi de neuf</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">moi : Ah! En ce moment tout est vieux, le travail la famille etc. :)</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">moi : Et toi ?</p></li>
+                                    <li class="id_moi  d-flex justify-content-end"><p class=" badge badge-info">Bonjour</p></li>
+                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Salut! Tu vas bien ?</p></li>
+                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> ça va merci et toi ?</p></li>
+                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Oui! Alors quoi de neuf</p></li>
+                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Ah! En ce moment tout est vieux, le travail la famille etc. :)</p></li>
+                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Et toi ?</p></li>
 
 
                                 </ul>
 
+                                <!-- Formulaire d'envoie de message -->
                                 <form class="col-md-12 row">
                                     <input type="text" id="username" placeholder="Votre pseudonyme" class="col-md-12">
                                     <textarea class="form-control col-md-9" rows="2" id="message" placeholder="Votre message"></textarea>
                                     <button type="submit" id="submit" class="btn btn-primary col-md">Envoyer</button>
                                 </form>
+                                <!-- Fin Formulaire d'envoie de message  -->
 
                             </div>
                             <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.
@@ -55,15 +62,12 @@
 
                             </div>
                         </div>
+                        <!--  Fin détail conversation  -->
                     </div>
+                    <!-- FIN Colonne de droite  -->
                 </div>
             </div>
 
-
-
-            <div id="response"></div>
-
-            <!--            <ul id="messages" style="list-style:none;"></ul>-->
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
@@ -72,10 +76,10 @@
             <script src="/socket.io/socket.io.js"></script>
 
             <script>
-
+                /*
                 $('[data-spy="scroll"]').on('activate.bs.scrollspy', function () {
                     // do something…
-                })
+                })*/
                 $(document).ready(function(){
                     let socket = io();
                     $('#submit').on('click', function(e){
@@ -87,13 +91,28 @@
                         };
 
                         socket.emit('new message', data);
+                        socket.emit('save conversation', data);
                     });
 
                     socket.on('error message', function(phrase){
                         $('#response').html(phrase);
                     });
 
+                    socket.on('save conversation', function(data){
+                        var contenu_conversation = new Object()
+                        
+                    }
                     socket.on('new message', function(data){
+                        if(data.username == 'moi'){
+                            $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> ' + XSSPatcher(data.message) + '</p></li>');
+
+                        }else {
+                            $('#messages').append('<li  class="id_julia d-flex justify-content-start"><p class=" badge badge-light">     ' + XSSPatcher(data.message) + '</p></li>');
+
+                        }
+
+                    });
+                    /*socket.on('new message', function(data){
                         if(data.username == 'moi'){
                             $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">' + XSSPatcher(data.username) + ' : ' + XSSPatcher(data.message) + '</p></li>');
 
@@ -102,7 +121,7 @@
 
                         }
 
-                    });
+                    });*/
 
 
                     function XSSPatcher(texte){
@@ -113,31 +132,25 @@
                             .replace(/"/g, "&quot;")
                             .replace(/'/g, "&&#039;")
                     }
-                    function writeToFile(d1){
 
-                        alert(d1);
-                        var fso = new ActiveXObject("Scripting.FileSystemObject");
+                    /*Je récupère les conversations situés dans un fichier*/
+                    socket.on('last message', function(contenu_conversation){
+                        for(var exKey in contenu_conversation) {
+                            //for(i=1; i<Object.keys(contenu_conversation[exKey]).length; i++){
+                                //if(Object.keys(contenu_conversation[exKey]).id)
+                                if(Object.values(contenu_conversation[exKey])[0] == 'id_moi'){
+                                    $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">' + Object.values(contenu_conversation[exKey])[1] + '</p></li>');
 
-                        var fh = fso.OpenTextFile("conversation/id_moi_id_julia.txt", 8, false, 0);
+                                }
+                                else {
+                                    $('#messages').append('<li  class="id_julia d-flex justify-content-start"><p class=" badge badge-light">' + Object.values(contenu_conversation[exKey])[1] + '</p></li>');
 
-                        fh.WriteLine(d1);
+                                }
+                            //}
+                        }
 
-                        fh.Close();
 
-                    }
-
-                    socket.on('last message', function(arr){
                         /*for(i = 0;i < arr.length;i++){
-                           // writeToFile( XSSPatcher(data.message));
-                            if(data.username == 'moi'){
-                                $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">' + XSSPatcher(data.username) + ' : ' + XSSPatcher(data.message) + '</p></li>');
-
-                            }else {
-                                $('#messages').append('<li  class="id_julia d-flex justify-content-start"><p class=" badge badge-light">' + XSSPatcher(data.username) + ' : ' + XSSPatcher(data.message) + '</p></li>');
-
-                            }
-                        }*/
-                        for(i = 0;i < arr.length;i++){
                             var x = XSSPatcher(arr[i]);
                             var classe;
                             var j = 0;
@@ -153,9 +166,10 @@
 
                             }
                             classe = "";
-                        }
+                        }*/
                     });
                 });
+
             </script>
 
         </div>

@@ -1,5 +1,14 @@
 var express = require('express');
 var fs=require('fs');
+let fichier = fs.readFileSync('./public/conversation/id_moi_id_julia.json')
+let contenu_conversation = JSON.parse(fichier)
+//console.log(contenu_conversation)
+
+/*for(var exKey in contenu_conversation) {
+    for(i=0; i<Object.keys(contenu_conversation[exKey]).length; i++){
+        console.log('clé ==> ' + Object.keys(contenu_conversation[exKey])[i]+ '    msg ==> ' + Object.values(contenu_conversation[exKey])[i]);
+    }
+}*/
 var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,10 +16,12 @@ router.get('/', function(req, res, next) {
     res.render('messagerie');
 
     //msg
+    //let lastMessage = new Array();
     let lastMessage = new Array();
     res.io.on('connection', function(client){
 
-        client.emit('last message', lastMessage);
+        client.emit('last message', contenu_conversation);
+        //client.emit('last message', lastMessage);
 
         client.on('new message', function(data){
             // Vérification du pseudonyme
