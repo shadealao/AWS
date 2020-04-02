@@ -1,7 +1,7 @@
 var express = require('express');
 var fs=require('fs');
-let fichier = fs.readFileSync('./public/conversation/id_moi_id_julia.json')
-let contenu_conversation = JSON.parse(fichier)
+//let fichier = fs.readFileSync('./public/conversation/id_moi_id_julia.json')
+//let contenu_conversation = JSON.parse(fichier)
 //console.log(contenu_conversation)
 
 /*for(var exKey in contenu_conversation) {
@@ -20,9 +20,16 @@ router.get('/', function(req, res, next) {
     let lastMessage = new Array();
     res.io.on('connection', function(client){
 
-        client.emit('last message', contenu_conversation);
+        // 
         //client.emit('last message', lastMessage);
 
+        client.on('afficher conversation', function(data){
+            let fichier = fs.readFileSync(data)
+            let contenu_conversation = JSON.parse(fichier)
+            client.emit('last message', contenu_conversation);
+        });
+        
+        
         client.on('new message', function(data){
             // Vérification du pseudonyme
             if(!data.username || typeof data.username == undefined || data.username.length > 25){
@@ -42,7 +49,7 @@ router.get('/', function(req, res, next) {
                 }
             }
             res.io.emit('new message', data);
-            res.io.emit('save conversation', data);
+            saveInFile(data);
         });
 
         client.on('disconnect', function(){
@@ -51,7 +58,7 @@ router.get('/', function(req, res, next) {
 
 
 
-        client.on('save in file', function(data){
+        function saveInFile(data){
             let msg = {
                 id : data.username,
                 message : data.message,
@@ -60,11 +67,10 @@ router.get('/', function(req, res, next) {
 
 
             let donnees = JSON.stringify(msg)
-            console.log("donnee :  "+donnees);
 
 
             //var st = fs.readFileSync("./public/conversation/id_moi_id_julia2.json");
-           /* var obj = {
+            /* var obj = {
                 table: []
             };
             obj.table.push(msg);
@@ -72,14 +78,14 @@ router.get('/', function(req, res, next) {
             var fs = require('fs');
             fs.writeFileSync('./public/conversation/id_moi_id_julia2.json', json, { flag: 'a' }, err => {})
             */
-            
-         //  fs.readFileSync('./public/conversation/id_moi_id_julia2.json', 'utf8', )
-   
-   var obj = JSON.parse( fs.readFileSync("./public/conversation/id_moi_id_julia.json")); //now it an object
-    obj.table.push(msg); //add some data
-    json = JSON.stringify(obj); //convert it back to json
-    fs.writeFile('./public/conversation/id_moi_id_julia.json', json, err => {}); // write it back 
-        });
+
+            //  fs.readFileSync('./public/conversation/id_moi_id_julia2.json', 'utf8', )
+
+            var obj = JSON.parse( fs.readFileSync(data.file)); //now it an object
+            obj.table.push(msg); //add some data
+            json = JSON.stringify(obj); //convert it back to json
+            fs.writeFile(data.file, json, err => {}); // write it back 
+        };
 
     });
 });
