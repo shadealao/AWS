@@ -42,10 +42,43 @@ router.get('/', function(req, res, next) {
                 }
             }
             res.io.emit('new message', data);
+            res.io.emit('save conversation', data);
         });
 
         client.on('disconnect', function(){
             delete client;
+        });
+
+
+
+        client.on('save in file', function(data){
+            let msg = {
+                id : data.username,
+                message : data.message,
+                date : data.date
+            };
+
+
+            let donnees = JSON.stringify(msg)
+            console.log("donnee :  "+donnees);
+
+
+            //var st = fs.readFileSync("./public/conversation/id_moi_id_julia2.json");
+           /* var obj = {
+                table: []
+            };
+            obj.table.push(msg);
+            var json = JSON.stringify(obj);
+            var fs = require('fs');
+            fs.writeFileSync('./public/conversation/id_moi_id_julia2.json', json, { flag: 'a' }, err => {})
+            */
+            
+         //  fs.readFileSync('./public/conversation/id_moi_id_julia2.json', 'utf8', )
+   
+   var obj = JSON.parse( fs.readFileSync("./public/conversation/id_moi_id_julia.json")); //now it an object
+    obj.table.push(msg); //add some data
+    json = JSON.stringify(obj); //convert it back to json
+    fs.writeFile('./public/conversation/id_moi_id_julia.json', json, err => {}); // write it back 
         });
 
     });

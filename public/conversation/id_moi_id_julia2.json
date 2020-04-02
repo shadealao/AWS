@@ -1,0 +1,34 @@
+{"table":[{"id":"j,hgf","message":"jhgfdd","date":"2020-04-02"}]}
+
+
+
+
+
+
+
+
+{"table":[{
+    "id" : "id_moi", 
+    "message" : "Bonjour Julia, comment vas-tu aujourd'hui ?",
+    "date" : "25/03/2020"
+},
+{
+    "id" : "id_julia", 
+    "message" : "Je vais bien et toi ",
+    "date" : "25/03/2020"
+},
+{
+    "id" : "id_moi", 
+    "message" : "Pareil!",
+    "date" : "25/03/2020"
+},
+{
+    "id" : "id_julia", 
+    "message" : "Alors",
+    "date" : "25/03/2020"
+},
+{
+    "id" : "id_julia", 
+    "message" : "Qu'à tu prévus de faire aujourd'hui ?",
+    "date" : "25/03/2020"
+}]}

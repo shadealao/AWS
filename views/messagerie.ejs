@@ -26,19 +26,7 @@
                             <!--  Détail conseration  -->
                             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                                 <ul id="messages" >
-                                    <li class="id_moi  d-flex justify-content-end"><p class=" badge badge-info">Bonjour</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Salut! Tu vas bien ?</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> ça va merci et toi ?</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Oui! Alors quoi de neuf</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Ah! En ce moment tout est vieux, le travail la famille etc. :)</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Et toi ?</p></li>
-
-                                    <li class="id_moi  d-flex justify-content-end"><p class=" badge badge-info">Bonjour</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Salut! Tu vas bien ?</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> ça va merci et toi ?</p></li>
-                                    <li class="id_julia d-flex justify-content-start"><p class=" badge badge-light"> Oui! Alors quoi de neuf</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Ah! En ce moment tout est vieux, le travail la famille etc. :)</p></li>
-                                    <li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> Et toi ?</p></li>
+                                    
 
 
                                 </ul>
@@ -81,17 +69,20 @@
                     // do something…
                 })*/
                 $(document).ready(function(){
+                    //var pos_contenu_conversation = 0;
                     let socket = io();
+
                     $('#submit').on('click', function(e){
                         e.preventDefault();
 
                         let data = {
                             username: $('#username').val(),
-                            message : $('#message').val()
+                            message : $('#message').val(),
+                            date :  new Date().toJSON().slice(0,10)
                         };
 
                         socket.emit('new message', data);
-                        socket.emit('save conversation', data);
+
                     });
 
                     socket.on('error message', function(phrase){
@@ -99,11 +90,22 @@
                     });
 
                     socket.on('save conversation', function(data){
-                        var contenu_conversation = new Object()
+                        var contenu_conversation = new Object();
+                        var msg = new Array();
+                        msg['id'] = data.username;
+                        msg['message'] = data.message;
+                        msg['date'] = data.date;
                         
-                    }
+                        contenu_conversation[0] = msg;
+//                        for(var exKey in contenu_conversation) {
+//                            for(i=0; i<Object.keys(contenu_conversation[exKey]).length; i++){
+//                                alert('clé ==> ' + Object.keys(contenu_conversation[exKey])[i]+ '    msg ==> ' + Object.values(contenu_conversation[exKey])[i]);
+//                            }
+//                        }
+                        socket.emit('save in file', data);
+                    });
                     socket.on('new message', function(data){
-                        if(data.username == 'moi'){
+                        if(data.username == 'id_moi'){
                             $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> ' + XSSPatcher(data.message) + '</p></li>');
 
                         }else {
@@ -135,17 +137,18 @@
 
                     /*Je récupère les conversations situés dans un fichier*/
                     socket.on('last message', function(contenu_conversation){
-                        for(var exKey in contenu_conversation) {
+                        for(var exKey in contenu_conversation.table) {
                             //for(i=1; i<Object.keys(contenu_conversation[exKey]).length; i++){
-                                //if(Object.keys(contenu_conversation[exKey]).id)
-                                if(Object.values(contenu_conversation[exKey])[0] == 'id_moi'){
-                                    $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">' + Object.values(contenu_conversation[exKey])[1] + '</p></li>');
+                            //if(Object.keys(contenu_conversation[exKey]).id)
+                            
+                            if(Object.values(contenu_conversation.table[exKey])[0] == 'id_moi'){
+                                $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">' + Object.values(contenu_conversation.table[exKey])[1] + '</p></li>');
 
-                                }
-                                else {
-                                    $('#messages').append('<li  class="id_julia d-flex justify-content-start"><p class=" badge badge-light">' + Object.values(contenu_conversation[exKey])[1] + '</p></li>');
+                            }
+                            else {
+                                $('#messages').append('<li  class="id_julia d-flex justify-content-start"><p class=" badge badge-light">' + Object.values(contenu_conversation.table[exKey])[1] + '</p></li>');
 
-                                }
+                            }
                             //}
                         }
 
