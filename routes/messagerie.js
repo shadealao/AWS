@@ -1,35 +1,32 @@
 var express = require('express');
 var fs=require('fs');
-//let fichier = fs.readFileSync('./public/conversation/id_moi_id_julia.json')
-//let contenu_conversation = JSON.parse(fichier)
-//console.log(contenu_conversation)
-
-/*for(var exKey in contenu_conversation) {
-    for(i=0; i<Object.keys(contenu_conversation[exKey]).length; i++){
-        console.log('clé ==> ' + Object.keys(contenu_conversation[exKey])[i]+ '    msg ==> ' + Object.values(contenu_conversation[exKey])[i]);
-    }
-}*/
 var router = express.Router();
-/* GET home page. */
+
 router.get('/', function(req, res, next) {
 
     res.render('messagerie');
 
-    //msg
-    //let lastMessage = new Array();
     let lastMessage = new Array();
     res.io.on('connection', function(client){
 
-        // 
-        //client.emit('last message', lastMessage);
 
+        /* Lit fichier .jon contenant une conversation. Renvoie le contenu si tout se passe bien*/
         client.on('afficher conversation', function(data){
-            let fichier = fs.readFileSync(data)
-            let contenu_conversation = JSON.parse(fichier)
-            client.emit('last message', contenu_conversation);
+            let fichier;
+            let contenu_conversation ;
+            try {
+                fichier = fs.readFileSync(data);
+                contenu_conversation = JSON.parse(fichier)
+                client.emit('last message', contenu_conversation);
+
+            } catch(err) {
+                client.emit('error message', "Problème lors de l'ouverture du fichier");
+                return;
+            }
         });
+
         
-        
+        /* Lit le message l'affiche et le sauvegarde dans un fichier json */
         client.on('new message', function(data){
             // Vérification du pseudonyme
             if(!data.username || typeof data.username == undefined || data.username.length > 25){
@@ -52,12 +49,8 @@ router.get('/', function(req, res, next) {
             saveInFile(data);
         });
 
-        client.on('disconnect', function(){
-            delete client;
-        });
-
-
-
+        
+        /*sauvegarde d'un message dans un fichier json*/
         function saveInFile(data){
             let msg = {
                 id : data.username,
@@ -65,27 +58,17 @@ router.get('/', function(req, res, next) {
                 date : data.date
             };
 
-
-            let donnees = JSON.stringify(msg)
-
-
-            //var st = fs.readFileSync("./public/conversation/id_moi_id_julia2.json");
-            /* var obj = {
-                table: []
-            };
-            obj.table.push(msg);
-            var json = JSON.stringify(obj);
-            var fs = require('fs');
-            fs.writeFileSync('./public/conversation/id_moi_id_julia2.json', json, { flag: 'a' }, err => {})
-            */
-
-            //  fs.readFileSync('./public/conversation/id_moi_id_julia2.json', 'utf8', )
-
-            var obj = JSON.parse( fs.readFileSync(data.file)); //now it an object
-            obj.table.push(msg); //add some data
-            json = JSON.stringify(obj); //convert it back to json
-            fs.writeFile(data.file, json, err => {}); // write it back 
+            var obj = JSON.parse( fs.readFileSync(data.file)); 
+            obj.table.push(msg); 
+            json = JSON.stringify(obj);
+            fs.writeFile(data.file, json, err => {});
         };
+        
+        
+        /*Déconnecte le client*/
+        client.on('disconnect', function(){
+            delete client;
+        });
 
     });
 });

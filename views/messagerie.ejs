@@ -38,15 +38,6 @@
                                 <!-- Fin Formulaire d'envoie de message  -->
 
                             </div>
-                            <!-- <div class="tab-pane fade " id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.
-
-</div>
-<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.
-
-</div>
-<div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.
-
-</div> -->
                         </div>
                         <!--  Fin détail conversation  -->
                     </div>
@@ -56,109 +47,9 @@
 
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-
-
             <script src="/socket.io/socket.io.js"></script>
 
-            <script>
-
-
-                $(document).ready(function(){
-                    //var pos_contenu_conversation = 0;
-                    let socket = io();
-                    let fichier = "";
-
-                    $('#submit').on('click', function(e){
-                        e.preventDefault();
-
-                        let data = {
-                            username: $('#username').val(),
-                            message : $('#message').val(),
-                            date :  new Date().toJSON().slice(0,10),
-                            file : fichier
-                        };
-
-                        socket.emit('new message', data);
-
-                    });
-
-                    socket.on('error message', function(phrase){
-                        $('#response').html(phrase);
-                    });
-
-                   
-                    socket.on('new message', function(data){
-                        if(data.username == 'id_moi'){
-                            $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info"> ' + XSSPatcher(data.message) + '</p></li>');
-
-                        }else {
-                            $('#messages').append('<li  class="'+data.username+' d-flex justify-content-start"><p class=" badge badge-light">     ' + XSSPatcher(data.message) + '</p></li>');
-
-                        }
-
-                    });
-
-
-                    function XSSPatcher(texte){
-                        return texte
-                            .replace(/&/g, "&amp;")
-                            .replace(/</g, "&lt;")
-                            .replace(/>/g, "&gt;")
-                            .replace(/"/g, "&quot;")
-                            .replace(/'/g, "&&#039;")
-                    }
-
-
-                    $(".conversation").click(function() {
-                        var href = this.href;
-                        var res = href.substring(href.indexOf('#')+1, href.length );
-
-                        $(".afficheConversation").attr("id", res)
-
-                        fichier = "./public/conversation/id_moi_"+res+".json";
-
-                        $("#messages").empty();
-                        socket.emit('afficher conversation', fichier);
-
-                    });
-
-                    /*Je récupère les conversations situés dans un fichier*/
-                    socket.on('last message', function(contenu_conversation){
-                        for(var exKey in contenu_conversation.table) {
-                            if(Object.values(contenu_conversation.table[exKey])[0] == 'id_moi'){
-                                $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">' + Object.values(contenu_conversation.table[exKey])[1] + '</p></li>');
-
-                            }
-                            else {
-                                $('#messages').append('<li  class="'+Object.values(contenu_conversation.table[exKey])[0]+' d-flex justify-content-start"><p class=" badge badge-light">' + Object.values(contenu_conversation.table[exKey])[1] + '</p></li>');
-
-                            }
-                            //}
-                        }
-
-
-                        /*for(i = 0;i < arr.length;i++){
-                            var x = XSSPatcher(arr[i]);
-                            var classe;
-                            var j = 0;
-                            while(x[j] != ':'){
-                                classe += x[j];
-                                j++;
-                            }
-                            if(classe == 'moi' || (classe == 'moi ')){
-                                $('#messages').append('<li class="id_moi d-flex justify-content-end"><p class=" badge badge-info">' + XSSPatcher(arr[i]) + '</p></li>');
-
-                            }else {
-                                $('#messages').append('<li  class="id_julia d-flex justify-content-start"><p class=" badge badge-light">' + XSSPatcher(arr[i]) + '</p></li>');
-
-                            }
-                            classe = "";
-                        }*/
-                    });
-                });
-
-            </script>
+            
 
         </div>
 
